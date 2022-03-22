@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeehiveManagementSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Beehive Management System" Height="325" Width="625">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Job Assignments" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Margin="20,0"/>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20">
+            <ComboBox x:Name="jobSelector" FontSize="18" SelectedIndex="0" Margin="0,0,0,20">
+                <ListBoxItem Content="Nectar Collector"/>
+                <ListBoxItem Content="Honey Manufacturer"/>
+                <ListBoxItem Content="Egg Care"/>
+            </ComboBox>
+            <Button Content="Assign this job to a bee" FontSize="18" Click="AssignJob_Click"/>
+        </StackPanel>
+
+        <Button Content="Work the next shift" Grid.Row="2" FontSize="18" Margin="20"/>
+
+        <Label Content="Queen's Report" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" FontSize="18" Margin="20,0"/>
+
+        <TextBox x:Name="statusReport" IsReadOnly="True" Margin ="0,20,0,20" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2" Width="275"/>
+
+
 
     </Grid>
 </Window>
