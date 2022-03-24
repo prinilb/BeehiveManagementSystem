@@ -13,18 +13,19 @@ namespace BeehiveManagementSystem
 
         public static void ConvertNectarToHoney(float amount)
         {
-            if (amount > nectar) { amount = nectar; } 
+            float nectarToConvert = amount; // need to set this as it's own variable because need to change the value on Line 17
+            if (nectarToConvert > nectar) { nectarToConvert = nectar; }
 
-            nectar -= amount;
-            honey += amount * NECTAR_CONVERSION_RATIO;
+            nectar -= nectarToConvert;
+            honey += nectarToConvert * NECTAR_CONVERSION_RATIO;
         }
 
-        public static bool ConsumeHoney(float amount) //confusion here
+        public static bool ConsumeHoney(float amount)
         {
-            if (amount >= honey) 
+            if (honey >= amount)
             {
                 honey -= amount;
-                return true; 
+                return true;
             }
 
             return false;

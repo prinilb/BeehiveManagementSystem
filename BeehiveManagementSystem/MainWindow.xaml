@@ -28,7 +28,7 @@
             <Button Content="Assign this job to a bee" FontSize="18" Click="AssignJob_Click"/>
         </StackPanel>
 
-        <Button Content="Work the next shift" Grid.Row="2" FontSize="18" Margin="20"/>
+        <Button Content="Work the next shift" Grid.Row="2" FontSize="18" Margin="20" Click="WorkShift_Click"/>
 
         <Label Content="Queen's Report" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" FontSize="18" Margin="20,0"/>
 
