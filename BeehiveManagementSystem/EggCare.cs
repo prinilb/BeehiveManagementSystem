@@ -6,6 +6,7 @@ namespace BeehiveManagementSystem
 {
     class EggCare : Bee
     {
+        // adjust these floats for difficulty
         public const float CARE_PROGRESS_PER_SHIFT = 0.15f;
         public override float CostPerShift { get { return 1.35f; } }
 

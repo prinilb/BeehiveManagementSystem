@@ -6,6 +6,7 @@ namespace BeehiveManagementSystem
 {
     class Queen : Bee
     {
+        // these two const could also be used to control the difficulty
         public const float EGGS_PER_SHIFT = 0.45f;
         public const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
 
@@ -17,7 +18,7 @@ namespace BeehiveManagementSystem
         public string StatusReport { get; private set; }
         public override float CostPerShift { get { return 2.15f; } }
 
-        public Queen(): base("Queen")
+        public Queen(): base("Queen") // constructor to start the program off with 1 bee in every job
         {
             AssignBee("Nectar Collector");
             AssignBee("Honey Manufacturer");
@@ -43,7 +44,7 @@ namespace BeehiveManagementSystem
                            $"\n{WorkerStatus("Egg Care")}\nTOTAL WORKERS: {workers.Length}";
         }
 
-        public void CareForEggs(float eggsToConvert)
+        public void CareForEggs(float eggsToConvert) // converts eggs to unassigned workers
         {
             if (eggs >= eggsToConvert)
             {
@@ -56,13 +57,14 @@ namespace BeehiveManagementSystem
         {
             int count = 0;
             foreach (Bee worker in workers)
-                if (worker.Job == job) count++;
-            string s = "s";
+                if (worker.Job == job) count++; // keeping track of how many bees in each job
+
+            string s = "s"; // plural or non-plural
             if (count == 1) s = "";
             return $"{count} {job} bee{s}";
         }
 
-        public void AssignBee(string job)
+        public void AssignBee(string job) // queen uses this and then used in the MainWindow
         {
             switch (job)
             {
@@ -82,13 +84,13 @@ namespace BeehiveManagementSystem
 
         protected override void DoJob()
         {
-            eggs += EGGS_PER_SHIFT;
-            foreach (Bee worker in workers)
+            eggs += EGGS_PER_SHIFT; // Queen laying eggs
+            foreach (Bee worker in workers) // Queen making sure all the bees work when
             {
                 worker.WorkTheNextShift();
             }
 
-            HoneyVault.ConsumeHoney(unassignedWorkers * HONEY_PER_UNASSIGNED_WORKER);
+            HoneyVault.ConsumeHoney(unassignedWorkers * HONEY_PER_UNASSIGNED_WORKER); // make sure the unassigned bees are still fed
             UpdateStatusReport();
         }
     }

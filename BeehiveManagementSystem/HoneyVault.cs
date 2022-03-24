@@ -8,10 +8,10 @@ namespace BeehiveManagementSystem
     {
         private static float honey = 25f;
         private static float nectar = 100f;
-        public const float NECTAR_CONVERSION_RATIO = .19f;
+        public const float NECTAR_CONVERSION_RATIO = .19f; // pretty much difficulty level
         public const float LOW_LEVEL_WARNING = 10f;
 
-        public static void ConvertNectarToHoney(float amount)
+        public static void ConvertNectarToHoney(float amount) // this method is for the HoneyManufacturer class
         {
             float nectarToConvert = amount; // need to set this as it's own variable because need to change the value on Line 17
             if (nectarToConvert > nectar) { nectarToConvert = nectar; }
@@ -20,7 +20,7 @@ namespace BeehiveManagementSystem
             honey += nectarToConvert * NECTAR_CONVERSION_RATIO;
         }
 
-        public static bool ConsumeHoney(float amount)
+        public static bool ConsumeHoney(float amount) // all the bees need honey
         {
             if (honey >= amount)
             {
@@ -31,12 +31,12 @@ namespace BeehiveManagementSystem
             return false;
         }
 
-        public static void CollectNectar(float amount)
+        public static void CollectNectar(float amount) // this method is for the NectarCollector class
         {
             if (amount > 0f) { nectar += amount; }
         }
 
-        public static string StatusReport
+        public static string StatusReport // Queen uses this method along with her own status report on 
         {
             get
             {

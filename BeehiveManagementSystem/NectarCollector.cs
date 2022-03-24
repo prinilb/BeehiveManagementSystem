@@ -6,7 +6,7 @@ namespace BeehiveManagementSystem
 {
     class NectarCollector : Bee
     {
-        public const float NECTAR_COLLECTED_PER_SHIFT = 33.35f;
+        public const float NECTAR_COLLECTED_PER_SHIFT = 33.25f; // could also be used to control the difficulty
         public override float CostPerShift { get { return 1.95f; } }
         public NectarCollector() : base("Nectar Collector") { }
 

@@ -4,26 +4,26 @@ using System.Text;
 
 namespace BeehiveManagementSystem
 {
-    class Bee
+    abstract class Bee
     {
-        public virtual float CostPerShift { get; } // virtual allows this property to be overridden by derived classes 
+        public abstract float CostPerShift { get; } 
 
         public string Job { get; private set; } // read only property
 
-        public Bee (string job)
+        public Bee (string job) // not sure where this works in the Queen class...gonna figure it out someday
         {
             Job = job;
         }
 
         public void WorkTheNextShift()
         {
-            if (HoneyVault.ConsumeHoney(CostPerShift))
+            if (HoneyVault.ConsumeHoney(CostPerShift)) // if the this returns false (see ConsumeHoney method in HoneyVault class), then nothing happens
             {
                 DoJob();
             }
         }
 
-        protected virtual void DoJob() { } // virtual allows this method to be overridden by derived classes
+        protected abstract void DoJob(); 
 
     }
 }
