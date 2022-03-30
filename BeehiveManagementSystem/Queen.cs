@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace BeehiveManagementSystem
 {
-    class Queen : Bee
+    class Queen : Bee, INotifyPropertyChanged
     {
         // these two const could also be used to control the difficulty
         public const float EGGS_PER_SHIFT = 0.45f;
         public const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
 
-        private Bee[] workers = new Bee[0];
+        private IWorker[] workers = new IWorker[0];
         private float eggs = 0;
         private float unassignedWorkers = 3;
-       
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         public string StatusReport { get; private set; }
         public override float CostPerShift { get { return 2.15f; } }
@@ -25,7 +32,7 @@ namespace BeehiveManagementSystem
             AssignBee("Egg Care");
         }
 
-        private void AddWorker(Bee worker)
+        private void AddWorker(IWorker worker)
         {
             if (unassignedWorkers >= 1)
             {
@@ -42,6 +49,7 @@ namespace BeehiveManagementSystem
                            $"\nEgg count: {eggs: 0.0}\nUnassigned workers: {unassignedWorkers: 0.0}\n" +
                            $"{WorkerStatus("Nectar Collector")}\n{WorkerStatus("Honey Manufacturer")}" +
                            $"\n{WorkerStatus("Egg Care")}\nTOTAL WORKERS: {workers.Length}";
+            OnPropertyChanged("StatusReport");
         }
 
         public void CareForEggs(float eggsToConvert) // converts eggs to unassigned workers
@@ -56,7 +64,7 @@ namespace BeehiveManagementSystem
         private string WorkerStatus(string job)
         {
             int count = 0;
-            foreach (Bee worker in workers)
+            foreach (IWorker worker in workers)
                 if (worker.Job == job) count++; // keeping track of how many bees in each job
 
             string s = "s"; // plural or non-plural
