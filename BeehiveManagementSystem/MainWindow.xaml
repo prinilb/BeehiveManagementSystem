@@ -31,13 +31,16 @@
             <Button Content="Assign this job to a bee" FontSize="18" Click="AssignJob_Click"/>
         </StackPanel>
 
-        <Button Content="Work the next shift" Grid.Row="2" FontSize="18" Margin="20" Click="WorkShift_Click"/>
+        <Button Content="Work the next shift" Grid.Row="1" FontSize="18" Margin="22,123,18,71" Click="WorkShift_Click" Grid.RowSpan="2"/>
 
         <Label Content="Queen's Report" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" FontSize="18" Margin="20,0"/>
 
         <TextBox x:Name="statusReport" IsReadOnly="True" Margin ="0,20,0,20" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2" Width="275" Text="{Binding StatusReport, Mode=OneWay}"/>
 
-
-
+        <Button x:Name="miniGame" Content="Extra Honey Mini-Game" FontSize="18" HorizontalAlignment="Left" Margin="58,74,0,0" Grid.Row="2" VerticalAlignment="Top" MaxWidth="200" MaxHeight="200" Click="matching_Game" />
+        
     </Grid>
 </Window>
+
+    
+   

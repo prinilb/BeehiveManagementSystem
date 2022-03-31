@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+
 namespace BeehiveManagementSystem
 {
     /// <summary>
@@ -52,5 +53,14 @@ namespace BeehiveManagementSystem
             queen.AssignBee(jobSelector.Text);
             statusReport.Text = queen.StatusReport;
         }
+
+        private void matching_Game(object sender, RoutedEventArgs e)
+        {
+            MiniGame mG = new MiniGame();
+            mG.Owner = this;
+            mG.Show();
+        }
+       
+        // <Button x:Name="miniGame" Content="Extra Honey Mini-Game" FontSize="18" HorizontalAlignment="Center" Margin="20,75,20,0" Grid.Row="2" VerticalAlignment="Center" MaxWidth="200" MaxHeight="200" Click="matching_Game" />
     }
 }
