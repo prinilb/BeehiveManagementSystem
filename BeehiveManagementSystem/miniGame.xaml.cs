@@ -10,7 +10,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BeehiveManagementSystem
+/* Things to do:
+ * Display how much honey was won
+ * Pause the beehive game while the minigame is playing
+ */
+
+namespace BeehiveManagementSystem 
 {
     using System.Linq;
 
@@ -18,11 +23,25 @@ namespace BeehiveManagementSystem
     /// Interaction logic for miniGame.xaml
     /// </summary>
     using System.Windows.Threading;
-    public partial class MiniGame 
+    public partial class MiniGame
     {
         DispatcherTimer timer = new DispatcherTimer();
         int tenthsofSecondsElapsed;
-        int matchesFound;
+        public int matchesFound;
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            tenthsofSecondsElapsed++;
+            timeTextBlock.Text = (tenthsofSecondsElapsed / 10F).ToString("0.0s");
+            if (matchesFound == 8)
+            {
+                timer.Stop();
+                timeTextBlock.Text = timeTextBlock.Text;
+                int winTime = tenthsofSecondsElapsed;
+                int awardWon =  HoneyVault.honeyAward(winTime);
+               // awardAmount.Text = "You won " + awardWon + " honey!!";
+            }
+            
+        }
         public MiniGame()
         {
             InitializeComponent();
@@ -32,20 +51,9 @@ namespace BeehiveManagementSystem
             SetUpGame();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            tenthsofSecondsElapsed++;
-            timeTextBlock.Text = (tenthsofSecondsElapsed / 10F).ToString("0.0s");
-            if (matchesFound == 8)
-            {
-                timer.Stop();
-                timeTextBlock.Text = timeTextBlock.Text + "You won " + " this much honey: "; // need to figure out how to add honey
-            }
-        }
-
         private void SetUpGame()
         {
-            List<string> animalEmoji = new List<string>() 
+            List<string> animalEmoji = new List<string>()
             {
                 "🐝", "🐝",
                 "👑", "👑",
@@ -109,5 +117,11 @@ namespace BeehiveManagementSystem
                 SetUpGame();
             }
         }
+
+        private void endGame(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

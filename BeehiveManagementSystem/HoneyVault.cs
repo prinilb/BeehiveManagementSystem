@@ -20,6 +20,17 @@ namespace BeehiveManagementSystem
             honey += nectarToConvert * NECTAR_CONVERSION_RATIO;
         }
 
+        public static int honeyAward(int tenthsOfSecondsElapsed)
+        {
+            int awardAmount = 0;
+            if (tenthsOfSecondsElapsed < 30) { awardAmount = 50; }
+            else { awardAmount += 15; }
+
+            honey += awardAmount;
+
+            return awardAmount;
+        }
+
         public static bool ConsumeHoney(float amount) // all the bees need honey
         {
             if (honey >= amount)
