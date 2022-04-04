@@ -30,11 +30,9 @@ namespace BeehiveManagementSystem
             if (matchesFound == 8)
             {
                 timer.Stop();
-                
-                int winTime = tenthsofSecondsElapsed;
-                int awardWon =  HoneyVault.honeyAward(winTime);
-                // awardAmount.Text = "You won " + awardWon + " honey!!";
-                timeTextBlock.Text = timeTextBlock.Text + "                            You won " + awardWon + " honey!!";
+                HoneyVault.HoneyAward(tenthsofSecondsElapsed); // make sure the honey gets added and doesn't just get put in the variable (might be unneccesary)
+                int awardWon =  HoneyVault.HoneyAward(tenthsofSecondsElapsed); // get that amount of honey 
+                timeTextBlock.Text = timeTextBlock.Text + "                            You won " + awardWon + " honey!!"; //display the amount of honey won
             }
             
         }
@@ -114,9 +112,9 @@ namespace BeehiveManagementSystem
             }
         }
 
-        private void endGame(object sender, RoutedEventArgs e)
+        private void endGame(object sender, RoutedEventArgs e) // this is the event handler for the "Done" button. 
         {
-            this.Close();
+            Close();
         }
 
     }

@@ -37,7 +37,7 @@
 
         <TextBox x:Name="statusReport" IsReadOnly="True" Margin ="0,20,0,20" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2" Width="275" Text="{Binding StatusReport, Mode=OneWay}"/>
 
-        <Button x:Name="miniGame" Content="Extra Honey Mini-Game" FontSize="18" HorizontalAlignment="Left" Margin="58,74,0,0" Grid.Row="2" VerticalAlignment="Top" MaxWidth="200" MaxHeight="200" Click="matching_Game" />
+        <Button x:Name="miniGame" Content="Extra Honey Mini-Game" FontSize="18" HorizontalAlignment="Left" Margin="58,74,0,0" Grid.Row="2" VerticalAlignment="Top" MaxWidth="200" MaxHeight="200" Click="mini_Game" />
         
     </Grid>
 </Window>

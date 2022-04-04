@@ -54,10 +54,10 @@ namespace BeehiveManagementSystem
             statusReport.Text = queen.StatusReport;
         }
 
-        private void matching_Game(object sender, RoutedEventArgs e)
+        private void mini_Game(object sender, RoutedEventArgs e) // event handler to open up the mini game
         {
             MiniGame mG = new MiniGame();
-            mG.Owner = this;
+            mG.Owner = this; // I honestly don't know what these two lines of code do, I just know it works to pop-up the new window
             mG.Show();
         }
        

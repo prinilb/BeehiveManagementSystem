@@ -20,11 +20,11 @@ namespace BeehiveManagementSystem
             honey += nectarToConvert * NECTAR_CONVERSION_RATIO;
         }
 
-        public static int honeyAward(int tenthsOfSecondsElapsed)
+        public static int HoneyAward(int tenthsOfSecondsElapsed) // for the mini-game
         {
             int awardAmount = 0;
-            if (tenthsOfSecondsElapsed < 30) { awardAmount = 50; }
-            else { awardAmount += 15; }
+            if (tenthsOfSecondsElapsed < 100) { awardAmount = 50; } // if the player beats 10 seconds then they get 50 honey
+            else { awardAmount += 15; } // if they don't beat 10 seconds then they just get 15 honey
 
             honey += awardAmount;
 
