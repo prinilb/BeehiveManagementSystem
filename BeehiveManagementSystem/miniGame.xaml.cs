@@ -10,11 +10,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-/* Things to do:
- * Display how much honey was won
- * Pause the beehive game while the minigame is playing
- */
-
 namespace BeehiveManagementSystem 
 {
     using System.Linq;
@@ -35,10 +30,11 @@ namespace BeehiveManagementSystem
             if (matchesFound == 8)
             {
                 timer.Stop();
-                timeTextBlock.Text = timeTextBlock.Text;
+                
                 int winTime = tenthsofSecondsElapsed;
                 int awardWon =  HoneyVault.honeyAward(winTime);
-               // awardAmount.Text = "You won " + awardWon + " honey!!";
+                // awardAmount.Text = "You won " + awardWon + " honey!!";
+                timeTextBlock.Text = timeTextBlock.Text + "                            You won " + awardWon + " honey!!";
             }
             
         }

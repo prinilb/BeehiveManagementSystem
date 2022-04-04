@@ -61,6 +61,5 @@ namespace BeehiveManagementSystem
             mG.Show();
         }
        
-        // <Button x:Name="miniGame" Content="Extra Honey Mini-Game" FontSize="18" HorizontalAlignment="Center" Margin="20,75,20,0" Grid.Row="2" VerticalAlignment="Center" MaxWidth="200" MaxHeight="200" Click="matching_Game" />
     }
 }
